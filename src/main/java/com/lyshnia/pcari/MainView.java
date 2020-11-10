@@ -25,7 +25,6 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.router.AfterNavigationEvent;
@@ -46,7 +45,7 @@ import java.time.ZoneId;
 /**
  * The main view contains a button and a click listener.
  */
-@PWA(name = "Lyshnia POS", shortName = "POS", enableInstallPrompt = false)
+@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = false, display = "fullscreen")
 @JsModule("./styles/shared-styles.js")
 @CssImport(value = "./styles/components/floating-action-button.css", themeFor = "vaadin-button")
 @CssImport(value = "./styles/components/grid.css", themeFor = "vaadin-grid")
@@ -203,7 +202,7 @@ public class MainView extends FlexBoxLayout
     private void initNaviItems() {
         NaviMenu menu = naviDrawer.getMenu();
         User user = accessControl.getUserInfo();
-        menu.addNaviItem(VaadinIcon.HOME, "Home", HomeView.class);
+//        menu.addNaviItem(VaadinIcon.HOME, "Home", HomeView.class);
 //        menu.addNaviItem(VaadinIcon.RECORDS, "Orders", BookingView.class);
 //        User user = accessControl.getUserInfo();
 
@@ -264,7 +263,7 @@ public class MainView extends FlexBoxLayout
             column.getElement().insertChild(0, appHeaderInner.getElement());
         }
         appHeaderInner.removeAll();
-        appHeaderInner.add(components);
+//        appHeaderInner.add(components);
     }
 
     private void setAppFooterInner(Component... components) {

@@ -9,6 +9,8 @@ $_documentContainer.innerHTML = `
 <custom-style>
   <style>
     html {
+      --lumo-primary-color: #26B9A4;
+      --lumo-border-radius: calc(var(--lumo-size-m) / 2);
     }
   </style>
 </custom-style>

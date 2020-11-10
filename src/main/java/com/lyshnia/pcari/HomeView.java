@@ -1,5 +1,6 @@
 package com.lyshnia.pcari;
 
+import com.lyshnia.pcari.app.HomeScreen;
 import com.lyshnia.pcari.ui.ViewFrame;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.router.PageTitle;
@@ -14,6 +15,6 @@ public class HomeView extends ViewFrame {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
-        setViewContent();
+        setViewContent(new HomeScreen());
     }
 }

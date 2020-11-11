@@ -1,8 +1,11 @@
 package com.lyshnia.pcari.app;
 
 import com.github.appreciated.card.ClickableCard;
+import com.lyshnia.pcari.DashboardView;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
@@ -21,6 +24,8 @@ public class HomeScreen extends PolymerTemplate<HomeScreen.HomeScreenModel> {
 
     @Id("cardLayout")
     private VerticalLayout cardLayout;
+    @Id("getStarted")
+    private Button getStarted;
 
     /**
      * Creates a new HomeScreen.
@@ -41,6 +46,8 @@ public class HomeScreen extends PolymerTemplate<HomeScreen.HomeScreenModel> {
         card2.getChildren().findFirst().get().getElement().getStyle().set("background-color", "white");
 
         cardLayout.add(card1);
+
+        getStarted.addClickListener(buttonClickEvent -> UI.getCurrent().navigate(DashboardView.class));
     }
 
     /**

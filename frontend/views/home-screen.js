@@ -34,8 +34,8 @@ class HomeScreen extends PolymerElement {
   <span style="font-weight: bold; color: black;">Say Hello to true vehicle browsing bliss</span>
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout theme="spacing" id="cardLayout" style="flex-grow: 1; align-items: center; justify-content: flex-end;"></vaadin-vertical-layout>
- <vaadin-button style="align-self: center;backgroud-color:white;" theme="primary contrast">
-  Get started!
+ <vaadin-button style="align-self: center;backgroud-color:white;" theme="primary contrast" id="getStarted">
+   Get started! 
  </vaadin-button>
 </vaadin-vertical-layout>
 `;

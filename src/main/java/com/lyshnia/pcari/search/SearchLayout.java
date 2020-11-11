@@ -50,7 +50,7 @@ public class SearchLayout extends PolymerTemplate<SearchLayout.SearchLayoutModel
         this.animate(Animation.BACK_IN_LEFT);
 
         searchButton.addClickListener(buttonClickEvent -> {
-
+            UI.getCurrent().navigate(ResultView.VIEW_NAME + "/" + category.name());
         });
 
     }

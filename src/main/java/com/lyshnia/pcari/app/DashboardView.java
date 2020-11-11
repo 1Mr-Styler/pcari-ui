@@ -1,6 +1,7 @@
 package com.lyshnia.pcari.app;
 
 import com.github.appreciated.card.ClickableCard;
+import com.lyshnia.pcari.search.SearchView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
@@ -88,6 +89,10 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         vl.setSpacing(false);
         vl.setPadding(false);
         vl.getStyle().set("margin", "0px");
+
+        card.addClickListener(componentEvent -> {
+            getUI().get().navigate(SearchView.VIEW_NAME + "/" + service);
+        });
 
         return vl;
     }

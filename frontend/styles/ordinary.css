@@ -1,0 +1,3 @@
+:host {
+    --lumo-text-field-size: var(--lumo-size-l);
+}

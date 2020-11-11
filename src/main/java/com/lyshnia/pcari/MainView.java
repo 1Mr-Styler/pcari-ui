@@ -25,8 +25,10 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.RouterLayout;
@@ -214,7 +216,7 @@ public class MainView extends FlexBoxLayout
      */
     private void initHeadersAndFooters() {
         // setAppHeaderOuter();
-//        setAppFooterInner();
+        setAppFooterInner();
         // setAppFooterOuter();
 
         // Default inner header setup:
@@ -274,6 +276,36 @@ public class MainView extends FlexBoxLayout
                     appFooterInner.getElement());
         }
 
+        Button home = UIUtils.createTertiaryButton(VaadinIcon.HOME);
+        Button rollback = UIUtils.createTertiaryButton(VaadinIcon.CLOCK);
+        Button activities = UIUtils.createTertiaryButton(VaadinIcon.INSTITUTION);
+        Button settings = UIUtils.createTertiaryButton(VaadinIcon.COG);
+
+        home.addClickListener(event -> {
+            UI.getCurrent().navigate(HomeView.class);
+        });
+
+        /*rollback.addClickListener(event -> {
+            UI.getCurrent().navigate(RollbackView.class);
+        });
+
+        activities.addClickListener(event -> {
+            UI.getCurrent().navigate(ActivityView.class);
+        });
+
+        settings.addClickListener(event -> {
+            UI.getCurrent().navigate(SettingsView.class);
+        });*/
+
+
+        for (Button button : new Button[]{home, rollback, activities, settings}) {
+            button.setWidth("25%");
+        }
+
+        FlexLayout footer = new FlexLayout(home, activities, rollback, settings);
+        footer.setWidthFull();
+        footer.setHeight("50px");
+
         // Set background color and shadow
         /*UIUtils.setBackgroundColor(LumoStyles.Color.BASE_COLOR, footer);
         UIUtils.setShadow(Shadow.L, footer);*/
@@ -281,7 +313,7 @@ public class MainView extends FlexBoxLayout
         appFooterInner.addClassName(BoxShadowBorders.TOP);
 
         appFooterInner.removeAll();
-        appFooterInner.add(components);
+        appFooterInner.add(footer);
     }
 
     private void setAppFooterOuter(Component... components) {

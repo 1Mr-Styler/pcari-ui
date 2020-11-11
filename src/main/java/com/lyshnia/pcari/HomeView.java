@@ -9,7 +9,7 @@ import com.vaadin.flow.router.RouteAlias;
 
 @Route(layout = MainView.class)
 @RouteAlias(value = "", layout = MainView.class)
-@PageTitle("Home")
+@PageTitle("Home | PCari")
 public class HomeView extends ViewFrame {
 
     @Override

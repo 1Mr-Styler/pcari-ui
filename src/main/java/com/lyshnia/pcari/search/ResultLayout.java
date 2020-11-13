@@ -21,10 +21,13 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.templatemodel.TemplateModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A Designer generated component for the result-layout template.
@@ -37,6 +40,7 @@ import java.util.List;
 public class ResultLayout extends PolymerTemplate<ResultLayout.ResultLayoutModel> {
 
     private List<Button> buttonList = new ArrayList<>();
+    private Category category;
 
     @Id("backButton")
     private Button backButton;
@@ -59,6 +63,7 @@ public class ResultLayout extends PolymerTemplate<ResultLayout.ResultLayoutModel
     public ResultLayout(Category category) {
         // You can initialise any data required for the connected UI components here.
         backButton.addClickListener(buttonClickEvent -> UI.getCurrent().navigate(SearchView.VIEW_NAME + "/" + category.name()));
+        this.category = category;
 
         getModel().setCat(category.name());
 
@@ -172,6 +177,16 @@ public class ResultLayout extends PolymerTemplate<ResultLayout.ResultLayoutModel
         hl.addAndExpand(vl);
         hl.add(favHolder);
         card.add(hl);
+        card.addClickListener(componentEvent -> {
+
+            Map hasmap = new HashMap<>();
+            hasmap.put("id", "1");
+            hasmap.put("category", category.name());
+
+            QueryParameters queryParameters = QueryParameters.simple(hasmap);
+            getUI().get().navigate(ProductView.VIEW_NAME, queryParameters);
+//            UI.getCurrent().navigate(ProductView.VIEW_NAME + "/" + 1)
+        });
         return card;
     }
 

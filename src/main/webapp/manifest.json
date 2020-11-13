@@ -1,0 +1,40 @@
+{
+  "dir": "ltr",
+  "lang": "English",
+  "name": "PCari.my",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "/",
+  "short_name": "PCari",
+  "theme_color": "#26B9A4",
+  "description": "PCari Consumer Platform",
+  "orientation": "any",
+  "background_color": "transparent",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "http://192.168.43.131:8011/icons/icon-16x16.png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "http://192.168.43.131:8011/icons/icon-32x32.png?-1402828063",
+      "sizes": "32x32"
+    },
+    {
+      "src": "http://192.168.43.131:8011/icons/icon-96x96.png?547910065",
+      "sizes": "96x96"
+    },
+    {
+      "src": "http://192.168.43.131:8011/icons/icon-180x180.png?-41360044",
+      "sizes": "180x180"
+    },
+    {
+      "src": "http://192.168.43.131:8011/icons/icon-512x512.png?-41360044",
+      "sizes": "512x512"
+    }
+  ],
+  "url": "http://192.168.43.131:8011",
+  "screenshots": [],
+  "generated": "true"
+}

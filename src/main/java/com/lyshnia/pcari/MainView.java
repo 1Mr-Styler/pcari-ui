@@ -47,7 +47,7 @@ import java.time.ZoneId;
 /**
  * The main view contains a button and a click listener.
  */
-@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = false, display = "fullscreen")
+@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = false, display = "standalone", manifestPath = "manifest.json")
 @JsModule("./styles/shared-styles.js")
 @CssImport(value = "./styles/components/floating-action-button.css", themeFor = "vaadin-button")
 @CssImport(value = "./styles/components/grid.css", themeFor = "vaadin-grid")
@@ -100,7 +100,7 @@ public class MainView extends FlexBoxLayout
 
     private Div appHeaderInner;
     private FlexBoxLayout viewContainer;
-    private Div appFooterInner;
+    public Div appFooterInner;
 
     private Div appFooterOuter;
 
@@ -265,7 +265,7 @@ public class MainView extends FlexBoxLayout
             column.getElement().insertChild(0, appHeaderInner.getElement());
         }
         appHeaderInner.removeAll();
-//        appHeaderInner.add(components);
+        appHeaderInner.add(components);
     }
 
     private void setAppFooterInner(Component... components) {

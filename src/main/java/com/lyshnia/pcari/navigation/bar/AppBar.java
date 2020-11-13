@@ -90,13 +90,16 @@ public class AppBar extends FlexBoxLayout {
                 .createTertiaryInlineButton(VaadinIcon.ARROW_LEFT);
         contextIcon.addClassNames(CLASS_NAME + "__context-icon");
         contextIcon.setVisible(false);
+        contextIcon.addThemeVariants(ButtonVariant.LUMO_ERROR);
         UIUtils.setAriaLabel("Back", contextIcon);
         UIUtils.setLineHeight("1", contextIcon);
+
     }
 
     private void initTitle(String title) {
         this.title = new H4(title);
         this.title.setClassName(CLASS_NAME + "__title");
+        this.title.getStyle().set("color", "black");
     }
 
     private void initSearch() {

@@ -12,6 +12,8 @@ public class DashboardView extends ViewFrame {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
+        MainView.get().appFooterInner.setVisible(true);
+
         setViewContent(new com.lyshnia.pcari.app.DashboardView());
     }
 }

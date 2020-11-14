@@ -3,12 +3,14 @@ package com.lyshnia.pcari.app;
 import com.github.appreciated.card.ClickableCard;
 import com.lyshnia.pcari.search.SearchView;
 import com.lyshnia.pcari.user.DealerView;
+import com.lyshnia.pcari.user.ProfileView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Span;
@@ -39,6 +41,8 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
     private HorizontalLayout fpostLayout;
     @Id("fdealLayout")
     private HorizontalLayout fdealLayout;
+    @Id("userIcon")
+    private Image userIcon;
 
     /**
      * Creates a new DashboardView.
@@ -67,6 +71,8 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         fdealLayout.add(createFPCard("MINI COOPER S", "images/cooper.jpg"));
         fdealLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
         fdealLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
+
+        userIcon.addClickListener(imageClickEvent -> launchProfile());
     }
 
     public Component createServiceCard(String service, String img) {
@@ -182,6 +188,16 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         });
 
         return card;
+    }
+
+    public void launchProfile() {
+        Dialog dialog = new Dialog();
+        dialog.add(new ProfileView(dialog));
+        dialog.setModal(true);
+        dialog.setWidth("100vw");
+        dialog.setHeight("100vh");
+        dialog.getElement().getStyle().set("padding", "0px");
+        dialog.open();
     }
 
     /**

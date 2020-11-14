@@ -14,7 +14,7 @@ class DashboardView extends PolymerElement {
             </style>
 <vaadin-vertical-layout>
  <vaadin-horizontal-layout theme="spacing" style="width: 100%; margin-top: var(--lumo-space-l); align-items: center; padding-right: var(--lumo-space-s); padding-left: var(--lumo-space-s);">
-  <img style="align-self: flex-end; width: 40px; height: 40px;" src="icons/user.png">
+  <img style="align-self: flex-end; width: 40px; height: 40px;" src="icons/user.png" id="userIcon">
   <img style="height: 40px; flex-grow: 0; flex-shrink: 1; margin-left: 24%;" src="images/logo.png">
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout theme="spacing" style="width: 100%; margin-top: var(--lumo-space-s); padding-left: var(--lumo-space-s); padding-right: var(--lumo-space-s);">

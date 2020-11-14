@@ -12,6 +12,28 @@ class HomeScreen extends PolymerElement {
                     display: block;
                     height: 100%;
                 }
+                .car1 {
+                    width: 70%;
+                    position: relative;
+                    animation-name: car1;
+                    animation-duration: 4s;
+                }
+                .car2 {
+                    width: 70%;
+                    position: relative;
+                    animation-name: car2;
+                    animation-duration: 4s;
+                }
+                
+                @keyframes car1 {
+                  0%   {left:200px;}
+                  50% {left:0px; }
+                }
+                @keyframes car2 {
+                  0%   {right:200px;}
+                  50% {right:0px; }
+                }
+                
             </style>
 <vaadin-vertical-layout style="width: 100%; height: 100%; background-image:url(images/bg-03.png); padding-bottom: var(--lumo-space-xl);">
  <vaadin-horizontal-layout theme="spacing" style="width: 100%; justify-content: flex-end; margin-top: var(--lumo-space-l); padding-right: var(--lumo-space-m); padding-left: var(--lumo-space-m);">
@@ -27,10 +49,10 @@ class HomeScreen extends PolymerElement {
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout theme="spacing" style="width: 100%; padding: var(--lumo-space-m); align-items: center; justify-content: flex-end;">
   <span style="font-weight: bold; color: white;">Unleash your Selling Potential with pcari.my</span>
-  <img style="width: 70%;" src="images/car.png">
+  <img style="width: 70%;" src="images/car.png" class="car1">
  </vaadin-horizontal-layout>
  <vaadin-horizontal-layout theme="spacing" style="width: 100%; padding: var(--lumo-space-m); align-items: center; justify-content: flex-end;">
-  <img style="width: 70%;" src="images/car2.png">
+  <img style="width: 70%;" src="images/car2.png" class="car2">
   <span style="font-weight: bold; color: black;">Say Hello to true vehicle browsing bliss</span>
  </vaadin-horizontal-layout>
  <vaadin-vertical-layout theme="spacing" id="cardLayout" style="flex-grow: 1; align-items: center; justify-content: flex-end;"></vaadin-vertical-layout>

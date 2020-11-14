@@ -6,6 +6,7 @@ import com.google.gson.*;
 import com.lyshnia.pcari.auth.AccessControl;
 import com.lyshnia.pcari.auth.AccessControlFactory;
 import com.lyshnia.pcari.auth.BasicAccessControl;
+import com.lyshnia.pcari.auth.LoginLayout;
 import com.lyshnia.pcari.navigation.bar.AppBar;
 import com.lyshnia.pcari.navigation.bar.TabBar;
 import com.lyshnia.pcari.navigation.drawer.NaviDrawer;
@@ -23,6 +24,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -47,7 +49,8 @@ import java.time.ZoneId;
 /**
  * The main view contains a button and a click listener.
  */
-@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = false, display = "standalone", manifestPath = "manifest.json")
+@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = false, display = "standalone",
+        manifestPath = "manifest.json")
 @JsModule("./styles/shared-styles.js")
 @CssImport(value = "./styles/components/floating-action-button.css", themeFor = "vaadin-button")
 @CssImport(value = "./styles/components/grid.css", themeFor = "vaadin-grid")
@@ -282,14 +285,16 @@ public class MainView extends FlexBoxLayout
         Button settings = UIUtils.createTertiaryButton(VaadinIcon.COG);
 
         home.addClickListener(event -> {
-            UI.getCurrent().navigate(HomeView.class);
+            UI.getCurrent().navigate(DashboardView.class);
         });
 
-        /*rollback.addClickListener(event -> {
-            UI.getCurrent().navigate(RollbackView.class);
+        rollback.addClickListener(event -> {
+//            UI.getCurrent().navigate(LoginView.class);
+
+            launchLogin();
         });
 
-        activities.addClickListener(event -> {
+        /*activities.addClickListener(event -> {
             UI.getCurrent().navigate(ActivityView.class);
         });
 
@@ -392,5 +397,14 @@ public class MainView extends FlexBoxLayout
         }
     }
 
+    public void launchLogin() {
+        Dialog dialog = new Dialog();
+        dialog.add(new LoginLayout(dialog));
+        dialog.setModal(true);
+        dialog.setWidth("100vw");
+        dialog.setHeight("100vh");
+        dialog.getElement().getStyle().set("padding", "0px");
+        dialog.open();
+    }
 
 }

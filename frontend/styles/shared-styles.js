@@ -11,7 +11,7 @@ $_documentContainer.innerHTML = `
     html {
       --lumo-primary-color: #26B9A4;
       --lumo-border-radius: calc(var(--lumo-size-m) / 2);
-    }
+    }    
   </style>
 </custom-style>
 
@@ -26,6 +26,36 @@ $_documentContainer.innerHTML = `
     }
   </style>
 </custom-style>
+
+<dom-module id="btn" theme-for="vaadin-button">
+ <template>
+   <style>
+     [part="vaadin-login-submit"] {
+         background-color: var(--lumo-contrast);
+    }
+   </style>
+ </template>
+</dom-module>
+
+
+<dom-module id="overlay" theme-for="vaadin-dialog-overlay">
+ <template>
+   <style>
+     /* Background needs a stronger selector to not be overridden */
+    :host {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            outline: 0px solid transparent;
+    }
+    
+    [part="content"] {
+       padding: 0px;
+     }
+   </style>
+ </template>
+</dom-module>
 
 <dom-module id="my-grid-styles" theme-for="vaadin-grid">
  <template>

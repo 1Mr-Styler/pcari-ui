@@ -8,7 +8,7 @@
   "short_name": "PCari",
   "theme_color": "#26B9A4",
   "description": "PCari Consumer Platform",
-  "orientation": "any",
+  "orientation": "portrait",
   "background_color": "transparent",
   "related_applications": [],
   "prefer_related_applications": false,

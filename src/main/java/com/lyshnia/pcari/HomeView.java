@@ -15,6 +15,7 @@ public class HomeView extends ViewFrame {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
+        MainView.get().appFooterInner.setVisible(false);
         setViewContent(new HomeScreen());
     }
 }

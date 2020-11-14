@@ -12,6 +12,8 @@ workbox.precaching.precacheAndRoute([
     {url: 'manifest.json'},
     {url: 'images/car.png'},
     {url: 'images/car2.png'},
+    {url: 'images/man.png'},
+    {url: 'images/logo-i.png'},
     {url: 'images/logo.png'}
 ]);
 self.addEventListener('fetch', function (event) {

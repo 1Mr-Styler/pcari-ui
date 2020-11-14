@@ -1,23 +1,21 @@
 package com.lyshnia.pcari.auth;
 
-import com.vaadin.flow.component.html.Image;
+import com.lyshnia.pcari.MainView;
+import com.lyshnia.pcari.ui.ViewFrame;
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.login.LoginForm;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route("login")
-@PageTitle("Lyshnia POS | Login")
-public class LoginView extends FlexLayout {
-    private AccessControl accessControl;
+@Route(value = "login", layout = MainView.class)
+@PageTitle("PCari | Login")
+public class LoginView extends ViewFrame {
+    private final AccessControl accessControl;
 
     public LoginView() {
-
-        setSizeFull();
         accessControl = AccessControlFactory.getInstance().createAccessControl();
 
-        // login form, centered in the available part of the screen
+        /*// login form, centered in the available part of the screen
         LoginForm loginForm = new LoginForm();
         loginForm.addLoginListener(this::login);
         loginForm.addForgotPasswordListener(
@@ -38,7 +36,16 @@ public class LoginView extends FlexLayout {
         centeringLayout.getStyle().set("flex-direction", "column-reverse");
         getStyle().set("flex-direction", "column");
         centeringLayout.add(image);
-        add(centeringLayout);
+        add(centeringLayout);*/
+
+//        setViewContent(new LoginLayout());
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+
+        MainView.get().appFooterInner.setVisible(false);
     }
 
     private void login(LoginForm.LoginEvent event) {

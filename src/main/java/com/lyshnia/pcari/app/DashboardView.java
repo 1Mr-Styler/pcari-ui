@@ -2,8 +2,10 @@ package com.lyshnia.pcari.app;
 
 import com.github.appreciated.card.ClickableCard;
 import com.lyshnia.pcari.search.SearchView;
+import com.lyshnia.pcari.user.DealerView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -174,6 +176,10 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         button.getStyle().set("align-self", "center");
 
         card.add(imageLayout, label, span, lastLayout, button);
+
+        button.addClickListener(componentEvent -> {
+            UI.getCurrent().navigate(DealerView.VIEW_NAME + "/" + dealer);
+        });
 
         return card;
     }

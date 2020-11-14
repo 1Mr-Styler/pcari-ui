@@ -16,7 +16,10 @@ import com.lyshnia.pcari.ui.FlexBoxLayout;
 import com.lyshnia.pcari.ui.util.BoxShadowBorders;
 import com.lyshnia.pcari.ui.util.UIUtils;
 import com.lyshnia.pcari.ui.util.css.Overflow;
+import com.lyshnia.pcari.user.FollowerView;
+import com.lyshnia.pcari.user.MessagesView;
 import com.lyshnia.pcari.user.User;
+import com.lyshnia.pcari.user.WishlistView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.UI;
@@ -280,34 +283,75 @@ public class MainView extends FlexBoxLayout
         }
 
         Button home = UIUtils.createTertiaryButton(VaadinIcon.HOME);
-        Button rollback = UIUtils.createTertiaryButton(VaadinIcon.CLOCK);
-        Button activities = UIUtils.createTertiaryButton(VaadinIcon.INSTITUTION);
-        Button settings = UIUtils.createTertiaryButton(VaadinIcon.COG);
+        Button wishlist = UIUtils.createTertiaryButton(VaadinIcon.HEART);
+        Button followers = UIUtils.createTertiaryButton(VaadinIcon.USERS);
+        Button messages = UIUtils.createTertiaryButton(VaadinIcon.CHAT);
+
 
         home.addClickListener(event -> {
+            event.getSource().addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ICON);
+            event.getSource().removeThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            wishlist.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            followers.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            messages.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+            wishlist.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            followers.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            messages.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
             UI.getCurrent().navigate(DashboardView.class);
         });
 
-        rollback.addClickListener(event -> {
-//            UI.getCurrent().navigate(LoginView.class);
+        wishlist.addClickListener(event -> {
+            event.getSource().addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ICON);
+            event.getSource().removeThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            UI.getCurrent().navigate(WishlistView.class);
+            home.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            followers.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            messages.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-            launchLogin();
+
+            home.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            followers.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            messages.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
         });
 
-        /*activities.addClickListener(event -> {
-            UI.getCurrent().navigate(ActivityView.class);
+        followers.addClickListener(event -> {
+            event.getSource().addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ICON);
+            event.getSource().removeThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            UI.getCurrent().navigate(FollowerView.class);
+
+//            launchLogin();
+            home.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            wishlist.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            messages.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+            home.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            wishlist.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            messages.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         });
 
-        settings.addClickListener(event -> {
-            UI.getCurrent().navigate(SettingsView.class);
-        });*/
+        messages.addClickListener(event -> {
+            event.getSource().addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ICON);
+            event.getSource().removeThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            UI.getCurrent().navigate(MessagesView.class);
+
+            home.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            wishlist.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            followers.removeThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+            home.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            wishlist.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+            followers.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        });
 
 
-        for (Button button : new Button[]{home, rollback, activities, settings}) {
+        for (Button button : new Button[]{home, followers, wishlist, messages}) {
             button.setWidth("25%");
         }
 
-        FlexLayout footer = new FlexLayout(home, activities, rollback, settings);
+        FlexLayout footer = new FlexLayout(home, wishlist, followers, messages);
         footer.setWidthFull();
         footer.setHeight("50px");
 

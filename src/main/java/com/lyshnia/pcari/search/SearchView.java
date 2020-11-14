@@ -22,12 +22,16 @@ public class SearchView extends ViewFrame implements HasUrlParameter<String> {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
+        MainView.get().appFooterInner.setVisible(false);
 
         if (redirect)
             UI.getCurrent().navigate(DashboardView.class);
 
 
-        setViewContent(new SearchLayout(category));
+        if (category == Category.Services)
+            setViewContent(new ServiceLayout());
+        else setViewContent(new SearchLayout(category));
+
     }
 
     @Override

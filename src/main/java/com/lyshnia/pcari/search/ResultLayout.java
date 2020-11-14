@@ -67,6 +67,11 @@ public class ResultLayout extends PolymerTemplate<ResultLayout.ResultLayoutModel
 
         getModel().setCat(category.name());
 
+        if (category == Category.Services) {
+            resultHolder.setVisible(false);
+            filterLayout.setVisible(false);
+        }
+
         buttonList.add(allButton);
         buttonList.add(newButton);
         buttonList.add(usedButton);

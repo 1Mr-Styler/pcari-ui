@@ -181,6 +181,10 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         label.getStyle().set("font-weight", "bold");
         label.getStyle().set("padding-left", "5px");
         label.getStyle().set("padding-top", "13px");
+        label.getStyle().set("white-space", "nowrap");
+        label.getStyle().set("overflow", "hidden");
+        label.getStyle().set("text-overflow", "ellipsis");
+
 
         Span span = new Span("43 Total Ads");
         span.getStyle().set("font-size", "10px");

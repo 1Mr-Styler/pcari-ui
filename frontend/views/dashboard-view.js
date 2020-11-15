@@ -31,7 +31,7 @@ class DashboardView extends PolymerElement {
   <label style="margin: 0px;">Featured Dealers</label>
   <a href="#" style="text-decoration: none; color: var(--lumo-primary-color);">See All</a>
  </vaadin-horizontal-layout>
- <vaadin-horizontal-layout theme="spacing-s" id="fdealersLayout" style="width: 100%; margin-right: var(--lumo-space-xs); overflow: auto; margin-left: var(--lumo-space-m); height: 200px;"></vaadin-horizontal-layout>
+ <vaadin-horizontal-layout theme="spacing-s" id="fdealersLayout" style="overflow: auto; margin-left: var(--lumo-space-m); height: 200px; align-self: stretch;"></vaadin-horizontal-layout>
  <label style="margin-top: var(--lumo-space-xl); margin-left: var(--lumo-space-s);">Fast Deal</label>
  <vaadin-horizontal-layout theme="spacing-s" id="fdealLayout" style="width: 100%; margin-right: var(--lumo-space-xs); overflow: auto;"></vaadin-horizontal-layout>
 </vaadin-vertical-layout>

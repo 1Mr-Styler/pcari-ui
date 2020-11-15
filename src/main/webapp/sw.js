@@ -19,6 +19,7 @@ workbox.precaching.precacheAndRoute([
     {url: 'icon/maintenance.svg'},
     {url: 'icon/tow.svg'},
     {url: 'icon/body-paint-repair.svg'},
+    {url: 'images/bg-03.png'},
     {url: 'images/logo-i.png'},
     {url: 'images/logo.png'}
 ]);

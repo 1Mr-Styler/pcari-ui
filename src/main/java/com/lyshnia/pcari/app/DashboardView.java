@@ -5,6 +5,7 @@ import com.lyshnia.pcari.MainView;
 import com.lyshnia.pcari.search.SearchView;
 import com.lyshnia.pcari.user.DealerView;
 import com.lyshnia.pcari.user.ProfileView;
+import com.lyshnia.pcari.user.User;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
@@ -24,6 +25,7 @@ import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.templatemodel.TemplateModel;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -64,15 +66,14 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         fpostLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
         fpostLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
 
+        ArrayList<User> users = new ArrayList<>(User.findAll());
+        System.out.println("User.findAll() = " + User.findAll());
 
-        fdealersLayout.add(createFDCard("Utama Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Kenghim Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Utama Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Kenghim Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Utama Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Kenghim Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Utama Motors", "images/asx.jpg", 1l));
-        fdealersLayout.add(createFDCard("Kenghim Motors", "images/asx.jpg", 1l));
+        users.forEach(user -> {
+            if (user.isDealer()) {
+                fdealersLayout.add(createFDCard(user.getNames(), user.getAvatar(), user.getId()));
+            }
+        });
 
         fdealLayout.add(createFPCard("MINI COOPER S", "images/cooper.jpg"));
         fdealLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
@@ -216,7 +217,7 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         card.add(imageLayout, label, span, lastLayout, button);
 
         button.addClickListener(componentEvent -> {
-            UI.getCurrent().navigate(DealerView.VIEW_NAME + "/" + dealer);
+            UI.getCurrent().navigate(DealerView.VIEW_NAME + "/" + id);
         });
 
         return card;

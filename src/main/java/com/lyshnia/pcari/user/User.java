@@ -24,6 +24,7 @@ public class User {
     private String password;
     @NotNull
     private String names;
+    private String location;
     @NotNull
     private String date;
     @NotNull
@@ -82,28 +83,25 @@ public class User {
     public static User make(Long id) {
         AccessControl accessControl = new BasicAccessControl();
 
-        if (accessControl.isUserSignedIn()) {
 
-            UserService service = MainView.retrofit.create(UserService.class);
+        UserService service = MainView.retrofit.create(UserService.class);
 
-            try {
-                Response<User> response = service.get(accessControl.getLogin().getAccess_token(), id).execute();
-                System.out.println(response.raw());
+        try {
+            Response<User> response = service.get(id).execute();
+            System.out.println(response.raw());
 
-                if (response.isSuccessful()) {
+            if (response.isSuccessful()) {
 
-                    User user = response.body();
-                    return user;
-                }
-                System.out.println(response.code());
-
-            } catch (Exception e) {
-                System.out.println(e);
+                User user = response.body();
+                return user;
             }
+            System.out.println(response.code());
 
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
-        System.out.println("isUserSignedIn: " + accessControl.isUserSignedIn());
+
         return null;
     }
 
@@ -149,7 +147,7 @@ public class User {
                 data.put("email", email);
                 data.put("password", "password");
                 data.put("names", names);
-                data.put("role", Role.Customer);
+                data.put("role", Role.User);
 
                 Response<User> response = userService.save(accessControl.getLogin().getAccess_token(), data, null).execute();
                 System.out.println(response.raw());
@@ -172,23 +170,21 @@ public class User {
     public static Collection<User> findAll() {
         AccessControl accessControl = new BasicAccessControl();
 
-        if (accessControl.isUserSignedIn()) {
-            UserService service = MainView.retrofit.create(UserService.class);
+        UserService service = MainView.retrofit.create(UserService.class);
 
-            try {
-                Response<Collection<User>> response = service.findAll(accessControl.getLogin().getAccess_token()).execute();
-                System.out.println(response.raw());
+        try {
+            Response<Collection<User>> response = service.findAll().execute();
+            System.out.println(response.raw());
 
-                if (response.isSuccessful()) {
-                    return response.body();
-                }
-                System.out.println(response.code());
-
-            } catch (Exception e) {
-                System.out.println(e);
+            if (response.isSuccessful()) {
+                return response.body();
             }
+            System.out.println(response.code());
 
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
 
         return Collections.emptyList();
     }
@@ -297,6 +293,8 @@ public class User {
     }
 
     public Role getRole() {
+        if (role == null)
+            fill();
         return role;
     }
 
@@ -368,8 +366,10 @@ public class User {
         if (id != null) {
             User user = User.make(this.id);
 
-            this.setNames(user.getNames());
-            this.setUsername(user.getUsername());
+            this.setNames(user.names);
+            this.role = user.role;
+            this.location = user.location;
+            this.setUsername(user.username);
             this.setDate(user.getDate());
         }
     }
@@ -391,29 +391,14 @@ public class User {
         return accessControl.isUserInRole("ROLE_ADMIN");
     }
 
-    public boolean isIT() {
-        return this.getRole() == Role.IT;
+    public boolean isUser() {
+        return this.getRole() == Role.User;
     }
 
-    public boolean isManager() {
-        return this.getRole() == Role.Manager;
+    public boolean isDealer() {
+        return this.getRole() == Role.Dealer;
     }
 
-    public boolean isStaff() {
-        return this.getRole() == Role.Staff;
-    }
-
-    public boolean isCashier() {
-        return this.getRole() == Role.Cashier;
-    }
-
-    public boolean isCLevel() {
-        return this.getRole() == Role.CLevel;
-    }
-
-    public boolean isAccountant() {
-        return this.getRole() == Role.Accountant;
-    }
 
     public String getDate() {
         return date;
@@ -428,4 +413,11 @@ public class User {
         return date == null ? null : LocalDate.parse(date);
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

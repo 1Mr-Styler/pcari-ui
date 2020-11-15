@@ -17,7 +17,7 @@ public class DealerView extends ViewFrame implements HasUrlParameter<String> {
     public static final String VIEW_NAME = "dealer";
 
     private boolean redirect = false;
-    private String category;
+    private User dealer;
 
     @Override
     protected void onAttach(AttachEvent attachEvent) {
@@ -28,13 +28,13 @@ public class DealerView extends ViewFrame implements HasUrlParameter<String> {
             UI.getCurrent().navigate(DashboardView.class);
 
 
-        setViewContent(new DealerProfile(category, "images/cooper.jpg", "Kuala Lumpur"));
+        setViewContent(new DealerProfile(dealer, dealer.getAvatar(), dealer.getLocation()));
     }
 
     @Override
     public void setParameter(BeforeEvent beforeEvent, String cat) {
         try {
-            category = cat;
+            dealer = User.make(Long.parseLong(cat));
         } catch (Exception ignored) {
             redirect = true;
         }

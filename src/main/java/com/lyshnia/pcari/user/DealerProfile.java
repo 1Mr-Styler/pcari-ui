@@ -45,11 +45,11 @@ public class DealerProfile extends PolymerTemplate<DealerProfile.DealerProfileMo
     /**
      * Creates a new DealerProfile.
      */
-    public DealerProfile(String name, String logo, String location) {
+    public DealerProfile(User dealer, String logo, String location) {
         // You can initialise any data required for the connected UI components here.
         backButton.addClickListener(buttonClickEvent -> UI.getCurrent().navigate(DashboardView.class));
         getModel().setLogo(logo);
-        getModel().setDealer(name);
+        getModel().setDealer(dealer.getNames());
         getModel().setLocation(location);
         getModel().setN("0");
 

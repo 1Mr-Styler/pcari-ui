@@ -15,12 +15,10 @@ public interface UserService {
 
     @GET("user")
     Call<Collection<User>> findAll(
-            @Header("Authorization") String authorization
     );
 
     @GET("user/{id}")
     Call<User> get(
-            @Header("Authorization") String authorization,
             @Path("id") Long id
     );
 

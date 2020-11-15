@@ -5,7 +5,6 @@ import com.lyshnia.pcari.auth.AccessControl;
 import com.lyshnia.pcari.auth.BasicAccessControl;
 import retrofit2.Response;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -26,8 +25,6 @@ public class User {
     @NotNull
     private String names;
     @NotNull
-    @Email
-    private String email;
     private String date;
     @NotNull
     private Role role;
@@ -46,7 +43,6 @@ public class User {
         this.username = loadedUser.username;
         this.password = loadedUser.password;
         this.names = loadedUser.names;
-        this.email = loadedUser.email;
         this.role = loadedUser.role;
         this.avatar = loadedUser.avatar;
         this.enabled = loadedUser.enabled;
@@ -62,7 +58,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.names = names;
-        this.email = email;
         this.role = role;
         this.avatar = avatar;
         this.enabled = enabled;
@@ -76,7 +71,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.names = names;
-        this.email = email;
         this.role = role;
         this.enabled = enabled;
         this.accountExpired = accountExpired;
@@ -213,7 +207,6 @@ public class User {
                 body.put("names", this.getNames());
                 body.put("username", this.getUsername());
                 body.put("password", this.getPassword());
-                body.put("email", this.getEmail());
                 body.put("role", this.getRole().toString());
 
                 Long branchId = null;
@@ -249,7 +242,6 @@ public class User {
                 body.put("names", this.getNames());
 //                body.put("username", this.getUsername());
                 body.put("password", this.getPassword());
-                body.put("email", this.getEmail());
 //                body.put("branch", this.getMixture());
 //                body.put("role", this.getRole().toString());
 
@@ -302,14 +294,6 @@ public class User {
 
     public void setNames(String names) {
         this.names = names;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Role getRole() {
@@ -380,17 +364,12 @@ public class User {
         return getNames() + " (" + username + ")";
     }
 
-    public String toStringE() {
-        return names + " (" + email + ")";
-    }
-
     public void fill() {
         if (id != null) {
             User user = User.make(this.id);
 
             this.setNames(user.getNames());
             this.setUsername(user.getUsername());
-            this.setEmail(user.getEmail());
             this.setDate(user.getDate());
         }
     }

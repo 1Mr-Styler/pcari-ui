@@ -1,6 +1,7 @@
 package com.lyshnia.pcari.app;
 
 import com.github.appreciated.card.ClickableCard;
+import com.lyshnia.pcari.MainView;
 import com.lyshnia.pcari.search.SearchView;
 import com.lyshnia.pcari.user.DealerView;
 import com.lyshnia.pcari.user.ProfileView;
@@ -22,6 +23,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.templatemodel.TemplateModel;
+
+import java.util.Calendar;
+import java.util.TimeZone;
+
+import static com.lyshnia.pcari.MainView.accessControl;
 
 /**
  * A Designer generated component for the dashboard-view template.
@@ -72,7 +78,33 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
         fdealLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
         fdealLayout.add(createFPCard("MITSUBISHI ASX 2.0 4AWD FACELIFT (AT)", "images/asx.jpg"));
 
-        userIcon.addClickListener(imageClickEvent -> launchProfile());
+        userIcon.addClickListener(imageClickEvent -> {
+            if (accessControl.isUserSignedIn())
+                launchProfile();
+            else MainView.get().launchLogin();
+        });
+
+        if (accessControl.isUserSignedIn()) {
+            getModel().setNames(accessControl.getUserInfo().getNames());
+        } else getModel().setNames("User");
+
+
+        Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Africa/Lagos"));
+        int hours = c.get(Calendar.HOUR_OF_DAY);
+        String g = "";
+
+
+        if (hours >= 1 && hours <= 12) {
+            g += "Good morning";
+        } else if (hours >= 12 && hours <= 16) {
+            g += "Good afternoon";
+        } else if (hours >= 16 && hours <= 21) {
+            g += "Evening";
+        } else if (hours >= 21) {
+            g += "Hello";
+        }
+
+        getModel().setGreeting(g);
     }
 
     public Component createServiceCard(String service, String img) {
@@ -205,5 +237,9 @@ public class DashboardView extends PolymerTemplate<DashboardView.DashboardViewMo
      */
     public interface DashboardViewModel extends TemplateModel {
         // Add setters and getters for template properties here.
+
+        void setNames(String names);
+
+        void setGreeting(String greeting);
     }
 }

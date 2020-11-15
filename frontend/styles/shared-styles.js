@@ -24,6 +24,25 @@ $_documentContainer.innerHTML = `
     vaadin-app-layout vaadin-tab a:hover {
       text-decoration: none;
     }
+    
+    .v-loading-indicator::after {
+      content: "";
+      position: fixed; /* Occupy whole screen even if scrolled */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* Eat mouse events when visible, doesn't prevent scrolling */
+      pointer-events: auto;
+      /* Animated with delay to prevent flashing */
+      animation: fadein 0.3s ease-out 0.2s normal 1 both;
+      z-index: 2147483647;
+      cursor: wait;
+    }
+    
+    .v-loading-indicator[style*=none]::after {
+     display: none;
+    }
   </style>
 </custom-style>
 

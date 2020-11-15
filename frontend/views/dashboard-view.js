@@ -20,9 +20,9 @@ class DashboardView extends PolymerElement {
  <vaadin-vertical-layout theme="spacing" style="width: 100%; margin-top: var(--lumo-space-s); padding-left: var(--lumo-space-s); padding-right: var(--lumo-space-s);">
   <vaadin-horizontal-layout theme="spacing-xs" style="width: 100%;  font-size: x-large;">
    <label>Hello, </label>
-   <label style="font-weight: bold;">User!</label>
+   <label style="font-weight: bold;">[[names]]!</label>
   </vaadin-horizontal-layout>
-  <label style="color: gray; margin-top: 0px;">Good Morning, welcome back.</label>
+  <label style="color: gray; margin-top: 0px;">[[greeting]], welcome back.</label>
  </vaadin-vertical-layout>
  <vaadin-horizontal-layout theme="spacing-s" id="servicesLayout" style="margin-top: var(--lumo-space-xl); align-self: stretch;"></vaadin-horizontal-layout>
  <label style="margin-top: var(--lumo-space-xl); margin-left: var(--lumo-space-s);">Featured Post</label>

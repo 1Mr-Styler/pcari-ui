@@ -8,6 +8,11 @@ import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.templatemodel.TemplateModel;
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.Date;
+
+import static com.lyshnia.pcari.MainView.accessControl;
 
 /**
  * A Designer generated component for the profile-view template.
@@ -31,11 +36,15 @@ public class ProfileView extends PolymerTemplate<ProfileView.ProfileViewModel> {
         // You can initialise any data required for the connected UI components here.
         closeButton.addClickListener(buttonClickEvent -> dialog.close());
 
-        getModel().setN("4 days ago");
+        PrettyTime p = new PrettyTime();
+        getModel().setN(p.format(Date.from(accessControl.getUserInfo().getDateLD().atStartOfDay(MainView.ZONE_ID).toInstant())));
+        getModel().setNames(accessControl.getUserInfo().getNames());
+        getModel().setEmail(accessControl.getUserInfo().getUsername());
 
         logoutButton.addClickListener(buttonClickEvent -> {
             MainView.accessControl.signOut();
         });
+
     }
 
     /**
@@ -45,5 +54,9 @@ public class ProfileView extends PolymerTemplate<ProfileView.ProfileViewModel> {
         // Add setters and getters for template properties here.
 
         void setN(String n);
+
+        void setNames(String names);
+
+        void setEmail(String email);
     }
 }

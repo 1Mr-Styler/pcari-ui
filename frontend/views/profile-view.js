@@ -43,14 +43,14 @@ class ProfileView extends PolymerElement {
   </vaadin-horizontal-layout>
  </vaadin-vertical-layout>
  <vaadin-vertical-layout theme="spacing" style="align-self: stretch; flex-grow: 1; border-radius: 15px 15px 0 0; z-index: 10; padding: var(--lumo-space-l); margin-top: var(--lumo-space-m); flex-shrink: 0; justify-content: flex-end;" class="shadow">
-  <vaadin-text-field label="Enter your name" style="align-self: stretch; background-color: transparent;" has-value>
+  <vaadin-text-field label="Enter your name" style="align-self: stretch; background-color: transparent;" has-value value="[[names]]">
    <div slot="prefix">
     <iron-icon style="height: 20px;" icon="vaadin:user"></iron-icon>
    </div>
   </vaadin-text-field>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; margin-left: var(--lumo-space-l);">
    <iron-icon icon="vaadin:envelope"></iron-icon>
-   <label style="flex-grow: 1;">jerrer@gmail.com</label>
+   <label style="flex-grow: 1;">[[email]]</label>
   </vaadin-horizontal-layout>
   <vaadin-horizontal-layout theme="spacing" style="align-self: stretch; margin-left: var(--lumo-space-l);">
    <iron-icon icon="vaadin:lock"></iron-icon>

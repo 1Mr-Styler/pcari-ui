@@ -14,27 +14,27 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "http://192.168.43.131:8011/icons/icon-16x16.png",
+      "src": "https://www.lyshnia.org/icons/icon-16x16.png",
       "sizes": "16x16"
     },
     {
-      "src": "http://192.168.43.131:8011/icons/icon-32x32.png?-1402828063",
+      "src": "https://www.lyshnia.org/icons/icon-32x32.png?-1402828063",
       "sizes": "32x32"
     },
     {
-      "src": "http://192.168.43.131:8011/icons/icon-96x96.png?547910065",
+      "src": "https://www.lyshnia.org/icons/icon-96x96.png?547910065",
       "sizes": "96x96"
     },
     {
-      "src": "http://192.168.43.131:8011/icons/icon-180x180.png?-41360044",
+      "src": "https://www.lyshnia.org/icons/icon-180x180.png?-41360044",
       "sizes": "180x180"
     },
     {
-      "src": "http://192.168.43.131:8011/icons/icon-512x512.png?-41360044",
+      "src": "https://www.lyshnia.org/icons/icon-512x512.png?-41360044",
       "sizes": "512x512"
     }
   ],
-  "url": "http://192.168.43.131:8011",
+  "url": "https://www.lyshnia.org",
   "screenshots": [],
   "generated": "true"
 }

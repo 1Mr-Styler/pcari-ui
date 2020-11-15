@@ -52,7 +52,7 @@ import java.time.ZoneId;
 /**
  * The main view contains a button and a click listener.
  */
-@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = false, display = "standalone",
+@PWA(name = "PCari.my", shortName = "PCari", enableInstallPrompt = true, display = "standalone",
         manifestPath = "manifest.json")
 @JsModule("./styles/shared-styles.js")
 @CssImport(value = "./styles/components/floating-action-button.css", themeFor = "vaadin-button")

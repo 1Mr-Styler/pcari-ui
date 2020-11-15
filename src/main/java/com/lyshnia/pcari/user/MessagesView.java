@@ -18,6 +18,10 @@ public class MessagesView extends ViewFrame {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
+        /*if(!MainView.accessControl.isUserSignedIn()) {
+            MainView.get().launchLogin();
+        }*/
+
         MainView.get().appFooterInner.setVisible(true);
         MainView.get().getAppBar().setVisible(true);
         MainView.get().getAppBar().setTitle("Messages");

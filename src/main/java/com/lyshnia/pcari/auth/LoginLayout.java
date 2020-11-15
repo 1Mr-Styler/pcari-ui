@@ -1,7 +1,9 @@
 package com.lyshnia.pcari.auth;
 
+import com.lyshnia.pcari.DashboardView;
 import com.lyshnia.pcari.MainView;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -49,7 +51,11 @@ public class LoginLayout extends PolymerTemplate<LoginLayout.LoginLayoutModel> {
         this.dialog = dialog;
         registerForm.setVisible(false);
 
-        closeButton.addClickListener(buttonClickEvent -> dialog.close());
+        closeButton.addClickListener(buttonClickEvent -> {
+            if (!MainView.accessControl.isUserSignedIn())
+                UI.getCurrent().navigate(DashboardView.class);
+            dialog.close();
+        });
 
         loginForm.addLoginListener(this::login);
         loginForm.addForgotPasswordListener(
@@ -77,7 +83,8 @@ public class LoginLayout extends PolymerTemplate<LoginLayout.LoginLayoutModel> {
 
     private void login(LoginForm.LoginEvent event) {
         if (MainView.accessControl.signIn(event.getUsername(), event.getPassword())) {
-            getUI().get().navigate("");
+            dialog.close();
+            UI.getCurrent().getPage().reload();
         } else {
             event.getSource().setError(true);
         }

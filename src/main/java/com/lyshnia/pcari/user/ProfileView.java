@@ -1,5 +1,6 @@
 package com.lyshnia.pcari.user;
 
+import com.lyshnia.pcari.MainView;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -20,6 +21,8 @@ public class ProfileView extends PolymerTemplate<ProfileView.ProfileViewModel> {
 
     @Id("closeButton")
     private Button closeButton;
+    @Id("logoutButton")
+    private Button logoutButton;
 
     /**
      * Creates a new ProfileView.
@@ -29,6 +32,10 @@ public class ProfileView extends PolymerTemplate<ProfileView.ProfileViewModel> {
         closeButton.addClickListener(buttonClickEvent -> dialog.close());
 
         getModel().setN("4 days ago");
+
+        logoutButton.addClickListener(buttonClickEvent -> {
+            MainView.accessControl.signOut();
+        });
     }
 
     /**

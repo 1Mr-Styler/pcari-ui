@@ -60,7 +60,7 @@ class ProfileView extends PolymerElement {
    <iron-icon icon="vaadin:qrcode"></iron-icon>
    <label style="flex-grow: 1;">QR Code</label>
   </vaadin-horizontal-layout>
-  <vaadin-button style="align-self: center; margin-top: var(--lumo-space-xl);" theme="tertiary error">
+  <vaadin-button style="align-self: center; margin-top: var(--lumo-space-xl);" theme="tertiary error" id="logoutButton">
     Sign Out 
   </vaadin-button>
  </vaadin-vertical-layout>

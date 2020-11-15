@@ -19,6 +19,11 @@ public class WishlistView extends ViewFrame {
     @Override
     protected void onAttach(AttachEvent attachEvent) {
         super.onAttach(attachEvent);
+
+        /*if (!MainView.accessControl.isUserSignedIn()) {
+            MainView.get().launchLogin();
+        }
+*/
         MainView.get().appFooterInner.setVisible(true);
 
         setViewContent(createView());
